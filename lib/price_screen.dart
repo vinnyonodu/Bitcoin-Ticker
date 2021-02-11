@@ -1,9 +1,15 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'coin_data.dart';
 import 'dart:io' show Platform;
 
 class PriceScreen extends StatefulWidget {
+  final String nameText;
+
+  PriceScreen({this.nameText});
+
   @override
   _PriceScreenState createState() => _PriceScreenState();
 }
@@ -99,7 +105,6 @@ class _PriceScreenState extends State<PriceScreen> {
     for (int i = 0; i < cryptoList.length; i++) {
       oneCrypto = cryptoList[i];
       Map<String, String> cryptoMap = {oneCrypto: oneCrypto};
-      print(cryptoMap);
       //return cryptoMap;
     }
   }
@@ -108,7 +113,7 @@ class _PriceScreenState extends State<PriceScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('🤑 Coin Ticker'),
+        title: Text('🤑 ONODU COIN TICKER'),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -117,7 +122,7 @@ class _PriceScreenState extends State<PriceScreen> {
           Padding(
             padding: EdgeInsets.fromLTRB(18.0, 18.0, 18.0, 0),
             child: Card(
-              color: Colors.lightBlueAccent,
+              color: Color(0xFF1D1E33),
               elevation: 5.0,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10.0),
@@ -138,7 +143,7 @@ class _PriceScreenState extends State<PriceScreen> {
           Padding(
             padding: EdgeInsets.fromLTRB(18.0, 18.0, 18.0, 0),
             child: Card(
-              color: Colors.lightBlueAccent,
+              color: Color(0xFF1D1E33),
               elevation: 5.0,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10.0),
@@ -159,7 +164,7 @@ class _PriceScreenState extends State<PriceScreen> {
           Padding(
             padding: EdgeInsets.fromLTRB(18.0, 18.0, 18.0, 0),
             child: Card(
-              color: Colors.lightBlueAccent,
+              color: Color(0xFF1D1E33),
               elevation: 5.0,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10.0),
@@ -177,14 +182,39 @@ class _PriceScreenState extends State<PriceScreen> {
               ),
             ),
           ),
+          SizedBox(
+            height: 20.0,
+          ),
           Expanded(
-            child: Container(
-              height: 150.0,
-              alignment: Alignment.center,
-              margin: EdgeInsets.only(top: 216.0),
-              padding: EdgeInsets.only(bottom: 30.0),
-              color: Colors.lightBlue,
-              child: Platform.isIOS ? iosPicker() : androidPicker(),
+            child: Column(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  child: Container(
+                    height: 50.0,
+                    child: Text(
+                      'Hello ' +
+                          widget.nameText +
+                          ', see corresponding cryptocurrency prices in ' +
+                          currencyName,
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 16.0),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                  child: Container(
+                    height: 160.0,
+                    alignment: Alignment.center,
+                    margin: EdgeInsets.only(top: 120.0),
+                    padding: EdgeInsets.only(bottom: 30.0),
+                    color: Color(0xFF111328),
+                    child: Platform.isIOS ? iosPicker() : androidPicker(),
+                  ),
+                ),
+              ],
             ),
           ),
         ],

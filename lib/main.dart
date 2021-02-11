@@ -1,3 +1,4 @@
+import 'package:bitcoin_ticker/reg_page.dart';
 import 'package:flutter/material.dart';
 import 'price_screen.dart';
 
@@ -8,9 +9,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.dark().copyWith(
-          primaryColor: Colors.lightBlue,
-          scaffoldBackgroundColor: Colors.white),
-      home: PriceScreen(),
+          primaryColor: Color(0xFF0A0E21),
+          scaffoldBackgroundColor: Colors.black26),
+      home: RegPage(),
     );
   }
 }
